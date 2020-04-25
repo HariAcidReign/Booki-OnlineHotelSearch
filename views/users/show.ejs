@@ -1,0 +1,34 @@
+<%- include("../partials/header") %>
+<!--Create custom description -->
+<div class="row">
+	<div class="col-md-4">
+			<h1><%= user.firstName + " " + user.lastName %></h1>
+		<div class="thumbnail">
+			<img src="<%= user.avatar %>" alt="user profile image" style = " border-radius: 30%;">
+			<hr style = "visibility: hidden;">
+			<div class="caption" style = "text-align: center"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
+		</div>
+		
+		
+	</div>
+	<div class="col-md-8">
+		<h3><%= user.username %>'s Hotels:</h3>
+		<ul>
+		<% campgrounds.forEach(function(campground) { %>
+			<li><a href="/campgrounds/<%= campground.id %>"><%= campground.name %></a></li>
+		<% }); %>
+		</ul>
+		<div class = "card-body">
+			<p>Author Bio</p>
+			<hr style = "visibility: hidden">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ullamcorper placerat urna non tempor. Ut consequat eleifend elit, ut vehicula purus scelerisque eget. Morbi pulvinar pulvinar ante, varius vestibulum enim blandit vitae. Cras lectus augue, sollicitudin eu neque eget, imperdiet blandit lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sodales elit orci. Cras posuere varius aliquet. Aliquam maximus erat non gravida commodo. Aliquam luctus nibh sit amet fringilla consequat. Pellentesque feugiat nisi eget nulla porta elementum. Cras imperdiet scelerisque orci ut scelerisque.
+				</p>
+			<hr>
+			<p>
+				<em>At Booki, we take utmost care to ensure legitimacy of all our resort and hotel listings. If you detect any suspicious activity, please contact Hariharan at haran465@gmail.com</em>
+			</p>
+		</div>
+	</div>
+</div>
+
