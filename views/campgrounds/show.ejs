@@ -4,17 +4,18 @@
   <div class="col-md-3">
             <p class="lead">Hotel Information</p>
             <div class="list-group">
-                <li class="list-group-item active">Info 1</li>
-                <li class="list-group-item">Info 2</li>
-                <li class="list-group-item">Info 3</li>
+                <li class="list-group-item">Location</li>
+                <li class="list-group-item">Timings</li>
+                <li class="list-group-item">Official Website</li>
             </div>
+	  <div id="map"></div>
   </div>
  <div class="col-md-9">
     <div class="card mb-3">
       <img class="card-img-top" src="<%= campground.image %>" alt="<%= campground.name %>">
       <div class="card-body">
         <p class="float-right">
-          $<%= campground.cost %>/night
+          $<%= campground.price %>/night
         </p>
         <h5 class="card-title"><%= campground.name %></h5>
 		
@@ -80,9 +81,9 @@
                         <em>(total reviews: <%= campground.reviews.length %>)</em>
                     </p>
                     <p>
-                        Current campground rating: <strong><%= campground.rating.toFixed(2) %></strong>
+                        Current Hotel rating: <strong><%= campground.rating.toFixed(2) %></strong>
                     </p>
-                    <p><h4>Latest reviews for this campground:</h4></p>
+                    <p><h4>Latest reviews for this Hotel:</h4></p>
                     <hr style="margin-top: 0;">
                     <% campground.reviews.slice(0, 5).forEach(function(review){ %>
                     <div class="row">
@@ -165,7 +166,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Campground likes: <%= campground.likes.length %></h4>
+                <h4 class="modal-title">Hotel likes: <%= campground.likes.length %></h4>
             </div>
             <div class="modal-body">
                 <table class="table table-striped">
@@ -194,6 +195,30 @@
         </div>
     </div>
 </div>
+
+<!-- Google Maps - I had to hardcode a random location in Australia, but in future commits, it has to be changed to show the location og the specific hotel. Requires a Google Maps API Key -->
+
+<script>
+function initMap() {
+    // The location of Uluru
+    var uluru = {
+        lat: -25.344,
+        lng: 131.036
+    };
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById('map'), {
+            zoom: 4,
+            center: uluru,
+	        scrollwheel: true
+        });
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+    });
+}
+</script>
 
 <%- include("../partials/footer") %>
 

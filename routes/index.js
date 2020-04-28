@@ -55,7 +55,7 @@ router.post("/register", function(req,res){
 	  from: 'HariHaran <haran465@gmail.com>',
 	  to:  req.body.email,
 	  subject: 'Welcome to Booki',
-	  text: 'Hi there! This is a Web Development project done from scratch by B.Hariharan. It is a mini working model of an online Hotel review application. Check the INFO Tab in the application to find out how I made this. Cheerios! Happy Coding :) '
+	  text: 'Hi there! This is a Web Development project done from scratch by B.Hariharan. It is a mini working model of an online Hotel review application. Check out my github https://github.com/HariAcidReign to know how i did it! Cheerios! :)   - HariAcidReign '
 	};
 
 	mailgun.messages().send(data, function (error, body) {
@@ -64,7 +64,7 @@ router.post("/register", function(req,res){
 		  req.flash("error", "Something unexpected occured");
 		  res.redirect("/campgrounds");
 	  } else {
-		  req.flash("success", "Thank you for joining Booki. Please check your email for further instructions || ");
+		  req.flash("success", "Thank you for joining Booki <3 ");
 	  }
 	
 	});

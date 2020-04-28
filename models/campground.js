@@ -1,13 +1,18 @@
 var mongoose = require("mongoose");
-// var Comment = require("./comment");
-// var Review = require("./review");
+var Comment = require("./comment");
+var Review = require("./review");
 
 // SCHEMA SETUP
 var campgroundSchema = new mongoose.Schema({
    name: String,
-   cost: Number,
+   price: Number,
    image: String,
+   timings: String,
+   site: String,
    description: String,
+   location: String,
+   lat: Number,
+   lng: Number,
    createdAt: {type: Date, default: Date.now},
 	author: {
 		id: {

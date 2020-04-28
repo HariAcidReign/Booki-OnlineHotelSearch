@@ -8,19 +8,31 @@
             <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input class="form-control" type="text" name="name" id="name" value="<%= campground.name %>">
+                    <input class="form-control" type="text" name="campground[name]" id="name" value="<%= campground.name %>">
                 </div>
                 <div class="form-group">
                     <label for="image">Image URL</label>
-                    <input class="form-control" type="text" name="image" id="image" placeholder="Enter image URL" value="<%= campground.image %>" required>
+                    <input class="form-control" type="text" name="campground[image]" id="image" placeholder="Enter image URL" value="<%= campground.image %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="cost">Cost</label>
-                    <input class="form-control" type="number" name="cost" id="cost" value="<%= campground.cost %>" step="0.01" min="0" required>
+                    <label for="price">Cost</label>
+                    <input class="form-control" type="number" name="campground[price]" id="price" value="<%= campground.price %>" step="0.01" min="0" required>
+                </div>
+                <div class="form-group">
+	                <label for="location">Location</label>
+	                <input class="form-control" type="text" name="campground[location]" id="location" value="<%= campground.location %>">
+                </div>
+	            <div class="form-group">
+	                <label for="timings">Timings</label>
+	                <input class="form-control" type="text" name="campground[timings]" id="timings" value="<%= campground.timings %>">
+                </div>
+	            <div class="form-group">
+	                <label for="site">Web Site</label>
+	                <input class="form-control" type="text" name="campground[site]" id="site" value="<%= campground.site %>">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input class="form-control" type="text" name="description" id="description" value="<%= campground.description %>">
+                    <input class="form-control" type="text" name="campground[description]" id="description" value="<%= campground.description %>">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary btn-block">Update</button>

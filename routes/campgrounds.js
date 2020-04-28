@@ -9,6 +9,18 @@ var Comment = require("../models/comment");
 var Review = require("../models/review");
 var middleware = require("../middleware"); //and not middleware/index.js
 
+// Google Maps
+// var NodeGeocoder = require('node-geocoder');
+ 
+// var options = {
+//   provider: 'google',
+//   httpAdapter: 'https',
+//   apiKey: process.env.GEOCODER_API_KEY,
+//   formatter: null
+// };
+ 
+// var geocoder = NodeGeocoder(options);
+
 //INDEX - show all campgrounds -> req.user has info on id and name of the current user
 router.get("/campgrounds", function(req, res){
     // Get all campgrounds from DB
@@ -38,30 +50,30 @@ router.get("/campgrounds", function(req, res){
 	}
 });
 
-//CREATE - add new campground to DB
+
+// CREATE - add new campground to DB 
 router.post("/campgrounds",middleware.isLoggedIn, function(req, res){
-    // get data from form and add to campgrounds array
+ // get data from form and add to campgrounds array
     var name = req.body.name;
-	var price = req.body.price;
+    var price = req.body.price;
     var image = req.body.image;
     var desc = req.body.description;
-	// Relating a new camp created to an author user - the alternate way
-	var author = {
-		id: req.user._id,
-		username: req.user.username
-	}
-    var newCampground = {name: name,price: price,image: image, description: desc, author: author}
+    var author = {
+        id: req.user._id,
+        username: req.user.username
+    }
+    var newCampground = {name: name, price: price, image: image, description: desc, author:author}
     // Create a new campground and save to DB
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
             console.log(err);
         } else {
             //redirect back to campgrounds page
+            console.log(newlyCreated);
             res.redirect("/campgrounds");
         }
     });
 });
-
 //NEW - show form to create new campground
 router.get("/campgrounds/new",middleware.isLoggedIn, function(req, res){
    res.render("campgrounds/new"); 
